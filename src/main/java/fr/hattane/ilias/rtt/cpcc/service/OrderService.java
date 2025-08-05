@@ -1,0 +1,17 @@
+package fr.hattane.ilias.rtt.cpcc.service;
+
+import fr.hattane.ilias.rtt.cpcc.repository.OrderRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+    private final OrderRepository repository;
+
+    public OrderService(OrderRepository repository) {
+        this.repository = repository;
+    }
+
+    public OrderRepository getRepository() {
+        return repository;
+    }
+}
