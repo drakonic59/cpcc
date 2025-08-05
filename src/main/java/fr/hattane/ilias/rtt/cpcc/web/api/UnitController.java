@@ -1,0 +1,14 @@
+package fr.hattane.ilias.rtt.cpcc.web.api;
+
+import fr.hattane.ilias.rtt.cpcc.entity.Unit;
+import fr.hattane.ilias.rtt.cpcc.repository.UnitRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/units")
+public class UnitController extends AbstractCrudRestController<Unit, Long> {
+    public UnitController(UnitRepository repository) {
+        super(repository);
+    }
+}
