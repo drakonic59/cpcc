@@ -11,27 +11,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Products")
-public class Product {
+@Table(name = "Bugs")
+public class Bug {
     @Id
     private Long id;
-
     private String name;
-
     @Column(columnDefinition = "text")
     private String description;
-
-    private Integer version;
-
-    @Column(name = "sell_price")
-    private Double sellPrice;
-
-    @Column(name = "production_price")
-    private Double productionPrice;
-
+    @ManyToOne
+    @JoinColumn(name = "product")
+    private Product product;
+    @ManyToOne
+    @JoinColumn(name = "package")
+    private PackageEntity packageEntity;
+    @Column(columnDefinition = "text")
+    private String source;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @ManyToOne
     @JoinColumn(name = "created_by")
     private User createdBy;

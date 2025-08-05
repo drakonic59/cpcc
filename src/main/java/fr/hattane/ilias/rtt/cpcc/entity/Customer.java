@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +18,9 @@ public class Customer {
     @Id
     private Long id;
 
-    private Long type;
+    @ManyToOne
+    @JoinColumn(name = "type")
+    private CustomerType type;
 
     @Column(name = "first_name")
     private String firstName;
@@ -34,13 +38,16 @@ public class Customer {
     @Column(name = "birth_date")
     private LocalDateTime birthDate;
 
-    private Long gender;
+    @ManyToOne
+    @JoinColumn(name = "gender")
+    private Gender gender;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "created_by")
-    private Long createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User createdBy;
 
     @Column(name = "first_buy_at")
     private LocalDateTime firstBuyAt;
@@ -56,4 +63,16 @@ public class Customer {
 
     @Column(columnDefinition = "text")
     private String preferences;
+
+    @ManyToMany
+    @JoinTable(name = "CustomerGroups",
+            joinColumns = @JoinColumn(name = "customer"),
+            inverseJoinColumns = @JoinColumn(name = "group"))
+    private Set<GroupEntity> groups = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "CustomerAddress",
+            joinColumns = @JoinColumn(name = "customer"),
+            inverseJoinColumns = @JoinColumn(name = "address"))
+    private Set<Address> addresses = new HashSet<>();
 }
