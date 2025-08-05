@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,10 +23,13 @@ public class Order {
     @Column(columnDefinition = "text")
     private String comment;
 
-    private Long product;
+    @ManyToOne
+    @JoinColumn(name = "product")
+    private Product product;
 
-    @Column(name = "ordered_by")
-    private Long orderedBy;
+    @ManyToOne
+    @JoinColumn(name = "ordered_by")
+    private Customer orderedBy;
 
     @Column(name = "ordered_at")
     private LocalDateTime orderedAt;
@@ -60,4 +65,10 @@ public class Order {
     private String deliveredBy;
 
     private String location;
+
+    @ManyToMany
+    @JoinTable(name = "OrderUnits",
+            joinColumns = @JoinColumn(name = "order"),
+            inverseJoinColumns = @JoinColumn(name = "unit"))
+    private Set<Unit> units = new HashSet<>();
 }

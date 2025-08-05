@@ -25,8 +25,9 @@ public class FinancialExtract {
     @Column(name = "date_to")
     private LocalDateTime dateTo;
 
-    @Column(name = "file_pdf")
-    private Long filePdf;
+    @ManyToOne
+    @JoinColumn(name = "file_pdf")
+    private FileEntity filePdf;
 
     @Column(name = "pay_full")
     private Double payFull;
