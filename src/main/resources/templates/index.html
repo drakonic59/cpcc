@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body class="container py-5">
+<div th:replace="fragments/navbar :: navbar"></div>
 <h1 class="mb-4">Outils de gestion</h1>
 <ul class="list-group">
     <li class="list-group-item"><a href="/customers"><i class="fa fa-users"></i> Gestion des clients</a></li>
@@ -14,5 +15,6 @@
     <li class="list-group-item"><a href="/finance"><i class="fa fa-chart-line"></i> Gestion comptable</a></li>
     <li class="list-group-item"><a href="/products"><i class="fa fa-box"></i> Gestion des produits</a></li>
 </ul>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

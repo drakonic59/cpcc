@@ -1,0 +1,14 @@
+package fr.hattane.ilias.rtt.cpcc.web;
+
+import fr.hattane.ilias.rtt.cpcc.entity.Gender;
+import fr.hattane.ilias.rtt.cpcc.service.GenderService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/genders")
+public class GenderPageController extends AbstractCrudPageController<Gender, Long> {
+    public GenderPageController(GenderService service) {
+        super(service.getRepository(), Gender.class, "genders");
+    }
+}

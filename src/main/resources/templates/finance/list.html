@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body class="container py-5">
+<div th:replace="fragments/navbar :: navbar"></div>
 <h1 class="mb-4">Bilans financiers</h1>
 <table class="table table-striped">
     <thead>
@@ -25,6 +26,7 @@
         <td th:text="${f.gainFull}"></td>
     </tr>
     </tbody>
-</table>
+ </table>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
