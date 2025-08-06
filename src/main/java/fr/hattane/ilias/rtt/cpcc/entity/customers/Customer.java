@@ -79,7 +79,8 @@ public class Customer {
     @ManyToMany
     @JoinTable(name = "CustomerGroups",
             joinColumns = @JoinColumn(name = "customer"),
-            inverseJoinColumns = @JoinColumn(name = "group"))
+            inverseJoinColumns = @JoinColumn(name = "`group`")
+    )
     private Set<GroupEntity> groups = new HashSet<>();
 
     @ManyToMany
