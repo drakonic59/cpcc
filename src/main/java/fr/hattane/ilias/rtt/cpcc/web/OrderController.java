@@ -20,7 +20,8 @@ public class OrderController {
     );
 
     @GetMapping
-    public String hub() {
+    public String hub(Model model) {
+        model.addAttribute("page", "orders");
         return "orders/index";
     }
 
@@ -28,6 +29,7 @@ public class OrderController {
     public String list(Model model) {
         model.addAttribute("items", service.getRepository().findAll());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "orders");
         return "orders/list";
     }
 
@@ -35,6 +37,7 @@ public class OrderController {
     public String add(Model model) {
         model.addAttribute("item", new Order());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "orders");
         return "orders/form";
     }
 
@@ -42,6 +45,7 @@ public class OrderController {
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("item", service.getRepository().findById(id).orElseThrow());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "orders");
         return "orders/form";
     }
 

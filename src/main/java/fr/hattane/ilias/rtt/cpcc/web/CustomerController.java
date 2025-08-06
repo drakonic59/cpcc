@@ -20,7 +20,8 @@ public class CustomerController {
     );
 
     @GetMapping
-    public String hub() {
+    public String hub(Model model) {
+        model.addAttribute("page", "customers");
         return "customers/index";
     }
 
@@ -28,6 +29,7 @@ public class CustomerController {
     public String list(Model model) {
         model.addAttribute("items", service.getRepository().findAll());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "customers");
         return "customers/list";
     }
 
@@ -35,6 +37,7 @@ public class CustomerController {
     public String add(Model model) {
         model.addAttribute("item", new Customer());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "customers");
         return "customers/form";
     }
 
@@ -42,6 +45,7 @@ public class CustomerController {
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("item", service.getRepository().findById(id).orElseThrow());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "customers");
         return "customers/form";
     }
 

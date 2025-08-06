@@ -20,7 +20,8 @@ public class ProductController {
     );
 
     @GetMapping
-    public String hub() {
+    public String hub(Model model) {
+        model.addAttribute("page", "products");
         return "products/index";
     }
 
@@ -28,6 +29,7 @@ public class ProductController {
     public String list(Model model) {
         model.addAttribute("items", service.getRepository().findAll());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "products");
         return "products/list";
     }
 
@@ -35,6 +37,7 @@ public class ProductController {
     public String add(Model model) {
         model.addAttribute("item", new Product());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "products");
         return "products/form";
     }
 
@@ -42,6 +45,7 @@ public class ProductController {
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("item", service.getRepository().findById(id).orElseThrow());
         model.addAttribute("fields", FIELDS);
+        model.addAttribute("page", "products");
         return "products/form";
     }
 

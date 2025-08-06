@@ -10,8 +10,8 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 <h1 class="mb-4" th:text="${title}">Management</h1>
 <div>
-    <a th:href="@{'/' + ${path} + '/list'}" class="btn btn-primary me-2">Voir la liste</a>
-    <a th:href="@{'/' + ${path} + '/add'}" class="btn btn-success">Ajouter</a>
+    <a th:href="@{'/' + ${path} + '/list'}" class="btn btn-primary me-2" th:text="#{crud.viewList}">Voir la liste</a>
+    <a th:href="@{'/' + ${path} + '/add'}" class="btn btn-success" th:text="#{crud.add}">Ajouter</a>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
@@ -28,20 +28,20 @@
 <body class="container py-5">
 <div th:replace="fragments/navbar :: navbar"></div>
 <h1 class="mb-4" th:text="${title}">List</h1>
-<a th:href="@{'/' + ${path} + '/add'}" class="btn btn-success mb-3">Ajouter</a>
+<a th:href="@{'/' + ${path} + '/add'}" class="btn btn-success mb-3" th:text="#{crud.add}">Ajouter</a>
 <table class="table table-striped">
     <thead>
     <tr>
         <th th:each="field : ${fields}" th:text="${field}">Field</th>
-        <th>Actions</th>
+        <th th:text="#{crud.actions}">Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="item : ${items}">
         <td th:each="field : ${fields}" th:text="${#fields.field(item, field)}"></td>
         <td>
-            <a th:href="@{'/' + ${path} + '/edit/' + ${#fields.field(item,'id')}}" class="btn btn-sm btn-secondary">Modifier</a>
-            <a th:href="@{'/' + ${path} + '/delete/' + ${#fields.field(item,'id')}}" class="btn btn-sm btn-danger">Supprimer</a>
+            <a th:href="@{'/' + ${path} + '/edit/' + ${#fields.field(item,'id')}}" class="btn btn-sm btn-secondary" th:text="#{crud.edit}">Modifier</a>
+            <a th:href="@{'/' + ${path} + '/delete/' + ${#fields.field(item,'id')}}" class="btn btn-sm btn-danger" th:text="#{crud.delete}">Supprimer</a>
         </td>
     </tr>
     </tbody>
@@ -67,8 +67,8 @@
         <input class="form-control" th:field="*{__${field}__}" th:if="${field} != 'id'">
         <input type="hidden" th:field="*{__${field}__}" th:if="${field} == 'id'">
     </div>
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-    <a class="btn btn-secondary" th:href="@{'/' + ${path} + '/list'}">Annuler</a>
+    <button type="submit" class="btn btn-primary" th:text="#{crud.save}">Enregistrer</button>
+    <a class="btn btn-secondary" th:href="@{'/' + ${path} + '/list'}" th:text="#{crud.cancel}">Annuler</a>
 </form>
 <div th:replace="fragments/footer :: footer"></div>
 </body>

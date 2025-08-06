@@ -1,20 +1,92 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>CPCC</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-</head>
-<body class="container py-5">
-<div th:replace="fragments/navbar :: navbar"></div>
-<h1 class="mb-4">Outils de gestion</h1>
-<ul class="list-group">
-    <li class="list-group-item"><a href="/customers"><i class="fa fa-users"></i> Gestion des clients</a></li>
-    <li class="list-group-item"><a href="/orders"><i class="fa fa-shopping-cart"></i> Gestion des commandes</a></li>
-    <li class="list-group-item"><a href="/finance"><i class="fa fa-chart-line"></i> Gestion comptable</a></li>
-    <li class="list-group-item"><a href="/products"><i class="fa fa-box"></i> Gestion des produits</a></li>
-</ul>
-<div th:replace="fragments/footer :: footer"></div>
-</body>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::section}, 'dashboard')">
+<section>
+  <h2 class="mb-4" th:text="#{dashboard.heading}">Tableau de bord</h2>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card p-3 dashboard-card">
+        <h5><i class="bi bi-people card-icon"></i> <span th:text="#{card.clients.title}">Gérer les clients</span></h5>
+        <ul>
+          <li th:text="#{card.clients.item1}">Rechercher, filtrer et éditer vos clients</li>
+          <li th:text="#{card.clients.item2}">Managez vos groupements</li>
+          <li th:text="#{card.clients.item3}">Gérez vos contacts (mails, SMS...)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3 dashboard-card">
+        <h5><i class="bi bi-box card-icon"></i> <span th:text="#{card.products.title}">Gérer les produits</span></h5>
+        <ul>
+          <li th:text="#{card.products.item1}">Gérez vos produits et packages</li>
+          <li th:text="#{card.products.item2}">Suivez le processus de fabrication</li>
+          <li th:text="#{card.products.item3}">Traitez les retours et commentaires</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3 dashboard-card">
+        <h5><i class="bi bi-cart card-icon"></i> <span th:text="#{card.orders.title}">Gérer les commandes</span></h5>
+        <ul>
+          <li th:text="#{card.orders.item1}">Visualisez et suivez vos commandes</li>
+          <li th:text="#{card.orders.item2}">Managez la production et les lots</li>
+          <li th:text="#{card.orders.item3}">Suivez l'expédition et la livraison</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3 dashboard-card">
+        <h5><i class="bi bi-cash-coin card-icon"></i> <span th:text="#{card.accounting.title}">Rapports comptables</span></h5>
+        <ul>
+          <li th:text="#{card.accounting.item1}">Visualisez vos factures</li>
+          <li th:text="#{card.accounting.item2}">Téléchargez vos extractions</li>
+          <li th:text="#{card.accounting.item3}">Consultez vos bilans comptables</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5 th:text="#{dashboard.history.title}">Historique financier</h5>
+        <img src="https://via.placeholder.com/500x200?text=Graphique+Financier" class="img-fluid" th:alt="#{dashboard.history.alt}" alt="graphique">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h5 th:text="#{dashboard.recentOrders.title}">Commandes récentes</h5>
+        <table class="table">
+          <thead>
+          <tr>
+            <th th:text="#{table.order}">Commande</th>
+            <th th:text="#{table.customer}">Client</th>
+            <th th:text="#{table.date}">Date</th>
+            <th th:text="#{table.status}">Statut</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>100012</td>
+            <td>Jean Durand</td>
+            <td>2025-08-05</td>
+            <td th:text="#{status.inprogress}">En cours</td>
+          </tr>
+          <tr>
+            <td>100011</td>
+            <td>Sophie Lambert</td>
+            <td>2025-08-04</td>
+            <td th:text="#{status.done}">Terminé</td>
+          </tr>
+          <tr>
+            <td>100010</td>
+            <td>Lue Martin</td>
+            <td>2025-08-03</td>
+            <td th:text="#{status.shipped}">Expédié</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 </html>
