@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.DiscussCategory;
+import fr.hattane.ilias.rtt.cpcc.entity.customers.DiscussCategory;
 import fr.hattane.ilias.rtt.cpcc.service.DiscussCategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

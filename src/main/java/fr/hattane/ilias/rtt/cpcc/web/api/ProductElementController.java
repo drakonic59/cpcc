@@ -1,7 +1,7 @@
 package fr.hattane.ilias.rtt.cpcc.web.api;
 
-import fr.hattane.ilias.rtt.cpcc.entity.ProductElement;
-import fr.hattane.ilias.rtt.cpcc.entity.ProductElementId;
+import fr.hattane.ilias.rtt.cpcc.entity.products.ProductElement;
+import fr.hattane.ilias.rtt.cpcc.entity.products.ProductElementId;
 import fr.hattane.ilias.rtt.cpcc.repository.ProductElementRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

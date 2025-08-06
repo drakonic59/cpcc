@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.CommentCategory;
+import fr.hattane.ilias.rtt.cpcc.entity.products.CommentCategory;
 import fr.hattane.ilias.rtt.cpcc.service.CommentCategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Unit;
+import fr.hattane.ilias.rtt.cpcc.entity.orders.Unit;
 import fr.hattane.ilias.rtt.cpcc.service.UnitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,9 +1,10 @@
 package fr.hattane.ilias.rtt.cpcc.repository;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import fr.hattane.ilias.rtt.cpcc.entity.products.Product;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web.api;
 
-import fr.hattane.ilias.rtt.cpcc.entity.FinancialExtract;
+import fr.hattane.ilias.rtt.cpcc.entity.finance.FinancialExtract;
 import fr.hattane.ilias.rtt.cpcc.repository.FinancialExtractRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

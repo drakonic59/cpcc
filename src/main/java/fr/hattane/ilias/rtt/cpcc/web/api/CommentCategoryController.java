@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web.api;
 
-import fr.hattane.ilias.rtt.cpcc.entity.CommentCategory;
+import fr.hattane.ilias.rtt.cpcc.entity.products.CommentCategory;
 import fr.hattane.ilias.rtt.cpcc.repository.CommentCategoryRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

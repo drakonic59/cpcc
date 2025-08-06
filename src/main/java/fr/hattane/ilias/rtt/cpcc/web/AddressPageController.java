@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Address;
+import fr.hattane.ilias.rtt.cpcc.entity.customers.Address;
 import fr.hattane.ilias.rtt.cpcc.service.AddressService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

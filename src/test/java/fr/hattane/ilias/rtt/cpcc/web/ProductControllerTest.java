@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Product;
+import fr.hattane.ilias.rtt.cpcc.entity.products.Product;
 import fr.hattane.ilias.rtt.cpcc.repository.ProductRepository;
 import fr.hattane.ilias.rtt.cpcc.service.ProductService;
 import org.junit.jupiter.api.Test;

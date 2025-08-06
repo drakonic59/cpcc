@@ -1,8 +1,9 @@
 package fr.hattane.ilias.rtt.cpcc.repository;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import fr.hattane.ilias.rtt.cpcc.entity.products.Comment;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {

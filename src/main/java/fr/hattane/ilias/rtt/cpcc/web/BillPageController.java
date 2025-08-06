@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Bill;
+import fr.hattane.ilias.rtt.cpcc.entity.finance.Bill;
 import fr.hattane.ilias.rtt.cpcc.service.BillService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

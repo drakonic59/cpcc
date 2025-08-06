@@ -1,0 +1,41 @@
+package fr.hattane.ilias.rtt.cpcc.entity.products;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+import fr.hattane.ilias.rtt.cpcc.entity.User;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "Products")
+public class Product {
+    @Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @Column(columnDefinition = "text")
+    private String description;
+
+    private Integer version;
+
+    @Column(name = "sell_price")
+    private Double sellPrice;
+
+    @Column(name = "production_price")
+    private Double productionPrice;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User createdBy;
+}

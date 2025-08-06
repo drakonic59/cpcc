@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Message;
+import fr.hattane.ilias.rtt.cpcc.entity.customers.Message;
 import fr.hattane.ilias.rtt.cpcc.service.MessageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package fr.hattane.ilias.rtt.cpcc.web.api;
 
-import fr.hattane.ilias.rtt.cpcc.entity.Unit;
+import fr.hattane.ilias.rtt.cpcc.entity.orders.Unit;
 import fr.hattane.ilias.rtt.cpcc.repository.UnitRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
