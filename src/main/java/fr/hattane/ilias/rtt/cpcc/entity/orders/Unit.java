@@ -17,10 +17,10 @@ public class Unit {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "product")
+    @JoinColumn(name = "product_id")
     private Product product;
     @ManyToOne
-    @JoinColumn(name = "package")
+    @JoinColumn(name = "package_id")
     private PackageEntity packageEntity;
     private String reference;
     private Boolean loosed;

@@ -25,7 +25,7 @@ public class Bug {
     @JoinColumn(name = "product")
     private Product product;
     @ManyToOne
-    @JoinColumn(name = "package")
+    @JoinColumn(name = "package_id")
     private PackageEntity packageEntity;
     @Column(columnDefinition = "text")
     private String source;

@@ -24,7 +24,7 @@ public class Bill {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "order")
+    @JoinColumn(name = "order_id")
     private Order order;
     @ManyToOne
     @JoinColumn(name = "product")

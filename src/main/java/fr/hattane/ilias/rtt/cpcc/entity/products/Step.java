@@ -20,6 +20,6 @@ public class Step {
     @ManyToOne
     @JoinColumn(name = "product")
     private Product product;
-    @Column(name = "index")
-    private Integer index;
+    @Column(name = "step_index")
+    private Integer stepIndex;
 }
