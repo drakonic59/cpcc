@@ -20,8 +20,8 @@ public class PackageEntity {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "index")
-    private Integer index;
+    @Column(name = "package_index")
+    private Integer packageIndex;
     private String name;
     @Column(columnDefinition = "text")
     private String description;

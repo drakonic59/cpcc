@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 public class PackageStep {
     @Id
     @ManyToOne
-    @JoinColumn(name = "package")
+    @JoinColumn(name = "package_id")
     private PackageEntity packageEntity;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "step")
+    @JoinColumn(name = "step_id")
     private Step step;
 
     @Column(name = "started_at")

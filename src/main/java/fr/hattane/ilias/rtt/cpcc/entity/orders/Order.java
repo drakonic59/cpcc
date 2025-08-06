@@ -72,7 +72,7 @@ public class Order {
 
     @ManyToMany
     @JoinTable(name = "OrderUnits",
-            joinColumns = @JoinColumn(name = "order"),
-            inverseJoinColumns = @JoinColumn(name = "unit"))
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "unit_id"))
     private Set<Unit> units = new HashSet<>();
 }
