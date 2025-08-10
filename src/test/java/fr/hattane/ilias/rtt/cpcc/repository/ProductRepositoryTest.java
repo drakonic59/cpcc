@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import fr.hattane.ilias.rtt.cpcc.entity.products.Product;
+import fr.hattane.ilias.rtt.cpcc.repository.products.ProductRepository;
 
 import java.time.LocalDateTime;
 

@@ -1,10 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::section}, 'products')">
-<section>
-  <h1 class="mb-4" th:text="#{products.manage.title}">Product Management</h1>
-  <div>
-    <a th:href="@{'/products/list'}" class="btn btn-primary me-2" th:text="#{crud.viewList}">Voir la liste</a>
-    <a th:href="@{'/products/add'}" class="btn btn-success" th:text="#{crud.add}">Ajouter</a>
-  </div>
+<section class="container-fluid m-0 p-0">
+	
+	<style>
+		
+		.product:hover {
+			font-weight: bold !important;
+		}
+		
+	</style>
+	
+	<div class="row justify-content-center m-0 p-0">
+		
+	  	<h1 class="col-12 mb-4 text-center" th:text="#{products.manage.title}">Product Management</h1>
+	  	<div class='col-3 text-center'>
+	    	<a th:href="@{'/products/add'}" class="btn btn-success" th:text="#{products.add}">Créer un nouveau produit</a>
+	  	</div>
+	  
+	</div>
+	<div class="row justify-content-center m-0 p-0">
+	
+		<span class="col-9 m-4">
+		  	<p>
+				Catégorie :
+				<select class="p-1 px-2">
+					<option value="0">
+						Tout
+					</option>
+					<option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+				</select>
+		  	</p>
+		</span>
+	  
+	</span>
+
+	<div class="row justify-content-center m-0 p-0">
+		
+		<div th:each="item : ${products}" class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a th:href="@{'/products/show/' + ${item.id}}" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{'/api/files/download/' + ${item.image.id}}"/>
+				<p th:text="${item.name}" class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		
+	</div>
+	
+	<div class="row justify-content-center m-0 p-0">
+		
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a href="http://" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a href="http://" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a href="http://" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a href="http://" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a href="http://" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		<div class="col-3 m-4 p-0 border border-dark text-center shadow product">
+			<a th:href="@{/products/show/1}" class="m-0 p-0 text-dark link-underline link-underline-opacity-0">
+				<img class="m-0 p-0 p-1" th:src="@{images/product_1.png}"/>
+				<p class="bg bg-light m-0 pb-2 pt-2 text-center">
+					Truffe Story
+				</p>
+			</a>
+		</div>
+		
+	</div>
+	  
 </section>
 </html>

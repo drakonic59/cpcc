@@ -10,11 +10,33 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductElementId implements Serializable {
+	
     private Long product;
     private Long element;
     
-    public ProductElementId(Long product, Long element) {
+    public ProductElementId() {
+		super();
+	}
+
+	public ProductElementId(Long product, Long element) {
     	this.product = product;
     	this.element = element;
     }
+
+	public Long getProduct() {
+		return product;
+	}
+
+	public void setProduct(Long product) {
+		this.product = product;
+	}
+
+	public Long getElement() {
+		return element;
+	}
+
+	public void setElement(Long element) {
+		this.element = element;
+	}
+    
 }

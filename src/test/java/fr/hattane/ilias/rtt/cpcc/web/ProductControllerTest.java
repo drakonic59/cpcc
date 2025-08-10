@@ -1,8 +1,9 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
 import fr.hattane.ilias.rtt.cpcc.entity.products.Product;
-import fr.hattane.ilias.rtt.cpcc.repository.ProductRepository;
-import fr.hattane.ilias.rtt.cpcc.service.ProductService;
+import fr.hattane.ilias.rtt.cpcc.repository.products.ProductRepository;
+import fr.hattane.ilias.rtt.cpcc.service.products.ProductService;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.ui.ConcurrentModel;

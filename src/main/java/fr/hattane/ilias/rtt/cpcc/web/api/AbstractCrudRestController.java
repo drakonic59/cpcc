@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * Sub-classes only need to provide the repository and mapping annotation.
  */
 public abstract class AbstractCrudRestController<T, ID> {
+	
     private final CrudRepository<T, ID> repository;
 
     protected AbstractCrudRestController(CrudRepository<T, ID> repository) {
@@ -44,4 +45,9 @@ public abstract class AbstractCrudRestController<T, ID> {
     public void delete(@PathVariable ID id) {
         repository.deleteById(id);
     }
+    
+    protected CrudRepository<T, ID> getRepository() {
+    	return repository;
+    }
+    
 }

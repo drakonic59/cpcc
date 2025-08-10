@@ -1,8 +1,9 @@
 package fr.hattane.ilias.rtt.cpcc.web;
 
 import fr.hattane.ilias.rtt.cpcc.entity.orders.Order;
-import fr.hattane.ilias.rtt.cpcc.repository.OrderRepository;
-import fr.hattane.ilias.rtt.cpcc.service.OrderService;
+import fr.hattane.ilias.rtt.cpcc.repository.orders.OrderRepository;
+import fr.hattane.ilias.rtt.cpcc.service.orders.OrderService;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.ui.ConcurrentModel;

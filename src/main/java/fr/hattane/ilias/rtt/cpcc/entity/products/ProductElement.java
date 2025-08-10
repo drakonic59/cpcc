@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "ProductElements")
 @IdClass(ProductElementId.class)
 public class ProductElement {
+	
     @Id
     @ManyToOne
     @JoinColumn(name = "product")
@@ -23,4 +24,40 @@ public class ProductElement {
     private Element element;
 
     private Integer quantity;
+
+	public ProductElement() {
+		super();
+	}
+
+	public ProductElement(Product product, Element element, Integer quantity) {
+		super();
+		this.product = product;
+		this.element = element;
+		this.quantity = quantity;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Element getElement() {
+		return element;
+	}
+
+	public void setElement(Element element) {
+		this.element = element;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+    
 }

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::section}, 'products')">
+<section class="container-fluid m-0 p-0">
+	
+	<style>
+
+		.product:hover {
+			font-weight: bold !important;
+		}
+		
+		.color-section {
+			background-color: #7BC994;
+		}
+		.section-head:hover {
+			background-color: #6DCF8D !important;
+			cursor: pointer !important;
+		}
+		
+		.hidden {
+		    display: none;
+		}
+		
+	</style>
+	
+	<div class="row justify-content-center m-0 p-0">
+		
+		<h1 class="col-12 text-center" th:text="${'Produit : ' + item.name}"></h1>
+		<h4 class="col-12 mb-4 text-center text-secondary mt-1" th:text="${'v' + item.productVersion + ' - ' + (item.enabled ? 'Actif' : 'Non Actif')}"></h4>
+	  
+	</div>
+	<div class="row justify-content-center m-0 p-0 mb-3">
+
+		<a th:href="@{'/products/new-version/' + ${item.id}}" class="col-2 text-center btn btn-success m-3 p-2" th:text="#{product.version.new}">Créer une nouvelle version</a>
+		<a th:href="@{'/products/edit/' + ${item.id}}" class="col-2 text-center btn btn-success m-3 p-2" th:text="#{product.version.change}">Modifier la version courante</a>
+		<a th:href="@{'/orders?product=' + ${item.id}}" class="col-2 text-center btn btn-success m-3 p-2" th:text="#{product.orders}">Créer une nouvelle version</a>
+		
+		<a th:href="@{'/products/disable?product=' + ${item.id}}" class="col-2 text-center btn btn-success m-3 p-2" th:text="#{product.disable}" th:if="${item.enabled}">Désactiver le produit</a>
+		<a th:href="@{'/products/enable?product=' + ${item.id}}" class="col-2 text-center btn btn-success m-3 p-2" th:text="#{product.enable}" th:if="${!item.enabled}">Activer le produit</a>
+		
+	</div>
+	
+<!--	<div class="row justify-content-center m-0 p-0 mb-4">-->
+<!--		<img class="col-2 m-0 p-0 p-1" th:src="@{'/api/files/download/' + ${item.image.id}}"/>-->
+<!--	</div>-->
+	
+	<div class="row justify-content-center m-0 p-0 mb-2">
+		
+		<h4 class="col-12 text-center" th:text="#{product.description}"></h4>
+		<div class="row justify-content-center m-0 p-0 mt-3">
+			
+			<p class="col-4 text-center" th:text="${'Poids net : ' + item.pound + ' kg'}"></p>
+			<p class="col-4 text-center" th:text="${'Dimensions : ' + item.width + ' / ' + item.height + ' / ' + item.deep + ' cm'}"></p>
+
+		</div>
+		
+		<p class="col-9 m-4 mt-2 text-justify" th:text="${item.description}"></p>
+		
+	</div>
+	<div class="row justify-content-center m-0 p-0 mb-2">
+		
+		<p class="col-2 text-center" th:text="#{product.external}"></p>
+		<a class="col-8 text-justify" th:text="${item.externalLink}" th:href="${item.externalLink}"></a>
+		
+	</div>
+		
+	<div class="row justify-content-center m-0 p-0">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="${'Prix de vente : ' + item.frontSellPrice() + ' €'}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.materials}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.process}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.cartoon}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2 mt-2">
+				<span class="col-7 border-bottom"></span>
+				<span class="col-1"></span>
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.full}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2 mt-2">
+				<span class="col-7 border-bottom"></span>
+				<span class="col-1"></span>
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.base}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.price.tva}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.inventoryandpackages}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.sold.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2 mt-2">
+				<span class="col-7 border-bottom"></span>
+				<span class="col-1"></span>
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.sold.products}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2 mt-2">
+				<span class="col-7 border-bottom"></span>
+				<span class="col-1"></span>
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.paid}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.quality}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.lifecycle}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.galery}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.stats}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.history}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="row justify-content-center m-0 p-0 mt-3">
+		
+		<div class="col-9 row justify-content-center m-0 p-2 bg bg-success section-head text-white text-center">
+			
+			<p class="col-11 m-0" th:text="#{product.competition}"></p>
+			<p class="col-1 m-0">
+				&#9866;
+			</p>
+			
+		</div>
+		
+	</div>
+	<div class="row justify-content-center section-body m-0 p-0 mb-5">
+			
+		<div class="col-9 row justify-content-center m-0 p-2 color-section text-white text-center hidden">
+			
+			<div class="row justify-content-center m-0 pt-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.packages}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			<div class="col-12 row justify-content-center m-0 mb-2">
+				
+				<p class="col-4 m-0 text-start d-inline" th:text="#{product.number.products.sell}">
+					
+				</p>
+				<p class="col-1 m-0 d-inline">
+					:
+				</p>
+				<p class="col-3 m-0 d-inline" th:text="${item.frontSellPrice() + ' €'}"></p>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	  
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		
+		$(document).ready(function() {
+		    $('.section-head').click(function() {
+
+				var nextElement = $(this).parent().next().children();
+				
+				nextElement.slideToggle(600, function() {
+                    nextElement.toggleClass('hidden');
+                });
+				
+		    });
+		});
+		
+	</script>
+	
+</section>
+</html>

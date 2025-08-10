@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::section}, 'products')">
 <section>
-  <h1 class="mb-4" th:text="#{products.form.title}">Product Form</h1>
-  <form th:action="@{'/products/save'}" th:object="${item}" method="post">
-    <div th:each="field : ${fields}" class="mb-3">
-      <label th:for="${field}" th:text="${field}" class="form-label"></label>
-      <input type="text" th:field="*{__${field}__}" class="form-control"/>
-    </div>
-    <button type="submit" class="btn btn-primary" th:text="#{crud.save}">Enregistrer</button>
-  </form>
+	
+  	<h1 class="mb-4" th:text="#{products.form.title}">Product Form</h1>
+  	<form th:action="@{'/products/save'}" th:object="${item}" method="post" class="row justify-content-center m-0 p-0 mb-5" enctype="multipart/form-data">
+	
+		<h3 class="mb-3">Informations :</h3>
+	    <div class="mb-3">
+	      	<label th:text="#{product.fields.name}" class="form-label"></label>
+	      	<input type="text" th:field="*{name}" th:value="${item.name}" class="form-control"/>
+	    </div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.description}" class="form-label"></label>
+		  	<input type="text" th:field="*{description}" th:value="${item.description}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.image}" class="form-label"></label>
+		  	<input type="file" th:name="img" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.version}" class="form-label"></label>
+		  	<input type="text" th:field="*{productVersion}" th:value="${item.productVersion}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.category}" class="form-label"></label>
+		  	<select th:field="*{category}" class="form-control">
+				<option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}">
+		  	</select>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.externallink}" class="form-label"></label>
+		  	<input type="text" th:field="*{externalLink}" th:value="${item.externalLink}" class="form-control"/>
+		</div>
+		<h3 class="mb-3 mt-2">Prix :</h3>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.sellprice}" class="form-label"></label>
+		  	<input type="text" th:field="*{sellPrice}" th:value="${item.sellPrice}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.productionprice}" class="form-label"></label>
+		  	<input type="text" th:field="*{productionPrice}" th:value="${item.productionPrice}" class="form-control"/>
+		</div>
+		<h3 class="mb-3 mt-2">Dimensions et poids :</h3>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.pound}" class="form-label"></label>
+		  	<input type="text" th:field="*{pound}" th:value="${item.pound}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.width}" class="form-label"></label>
+		  	<input type="text" th:field="*{width}" th:value="${item.width}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.height}" class="form-label"></label>
+		  	<input type="text" th:field="*{height}" th:value="${item.height}" class="form-control"/>
+		</div>
+		<div class="mb-3">
+		  	<label th:text="#{product.fields.deep}" class="form-label"></label>
+		  	<input type="text" th:field="*{deep}" th:value="${item.deep}" class="form-control"/>
+		</div>
+		
+		<button type="submit" class="btn btn-primary mt-3" th:text="#{crud.save}">Enregistrer</button>
+	
+  	</form>
+	
 </section>
 </html>

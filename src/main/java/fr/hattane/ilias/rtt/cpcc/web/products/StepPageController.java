@@ -1,0 +1,16 @@
+package fr.hattane.ilias.rtt.cpcc.web.products;
+
+import fr.hattane.ilias.rtt.cpcc.entity.products.Step;
+import fr.hattane.ilias.rtt.cpcc.service.products.StepService;
+import fr.hattane.ilias.rtt.cpcc.web.AbstractCrudPageController;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/steps")
+public class StepPageController extends AbstractCrudPageController<Step, Long> {
+    public StepPageController(StepService service) {
+        super(service.getRepository(), Step.class, "steps");
+    }
+}

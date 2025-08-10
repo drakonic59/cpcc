@@ -1,8 +1,10 @@
 package fr.hattane.ilias.rtt.cpcc.service;
 
-import fr.hattane.ilias.rtt.cpcc.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import fr.hattane.ilias.rtt.cpcc.repository.customers.CustomerRepository;
+import fr.hattane.ilias.rtt.cpcc.service.customers.CustomerService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
